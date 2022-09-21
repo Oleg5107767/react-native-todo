@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Button, Alert} from 'react-native';
+import { THEME } from '../theme';
 
 export const AddTodo = ({ onSumbit }) => {
     const [value, setValue] = useState('')
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderStyle: "solid",
         borderBottomWidth: 2,
-        borderBottomColor: "#3949ab"
+        borderBottomColor: THEME.MAIN_COLOR
     },
 })
 
