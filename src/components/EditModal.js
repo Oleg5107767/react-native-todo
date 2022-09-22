@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Modal, Alert } from 'react-native';
-import { THEME } from '../theme';
+import React, { useState } from 'react'
+import { StyleSheet, View, TextInput, Button, Modal, Alert } from 'react-native'
+import { THEME } from '../theme'
+import { AppButton } from './ui/AppButton'
 
 export const EditModal = ({ visible, onCancel, value, onSave }) => {
 
     const [title, setTitlte] = useState(value)
 
-    const saveHandler = ( ) => {
-        if(title.trim().length < 3){
+    const saveHandler = () => {
+        if (title.trim().length < 3) {
             Alert.alert(
                 'Ошибка!',
-                `Минимальная длина названия 3 символа. Сейчас ${title.trim().length 
+                `Минимальная длина названия 3 символа. Сейчас ${title.trim().length
                 }символов.`
             )
-        }else{
+        } else {
             onSave(title)
         }
     }
@@ -30,17 +31,17 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
                     maxLength={64}
                 />
                 <View style={styles.buttons}>
-                    <Button
-                        title='Отменить'
-                        onPress={onCancel}
-                        color={THEME.DANGER_COLOR}
-                    />
-                    <Button title='Сохранить' onPress={saveHandler} />
+                    <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
+                        Отменить
+                    </AppButton>
+                    <AppButton onPress={saveHandler} >
+                        Сохранить
+                    </AppButton>
                 </View>
             </View>
         </Modal>
-    );
-};
+    )
+}
 
 const styles = StyleSheet.create({
     wrap: {
@@ -60,5 +61,5 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around"
     }
-});
+})
 
